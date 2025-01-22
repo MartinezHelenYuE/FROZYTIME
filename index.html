@@ -1,0 +1,184 @@
+<html>
+ <head>
+  <title>
+   FrozyTime
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Roboto', sans-serif;
+            background-color: #0b0b1d;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            flex-direction: row;
+        }
+        .left-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 50px;
+        }
+        .left-section h1 {
+            font-size: 72px;
+            margin: 0;
+        }
+        .left-section p {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        .left-section .button {
+            margin-top: 20px;
+        }
+        .left-section .button a {
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(90deg, #4b6cb7, #182848);
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+        .right-section {
+            flex: 1;
+            overflow: hidden;
+        }
+        .right-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .navbar {
+            position: absolute;
+            top: 20px;
+            left: 50px;
+            display: flex;
+            align-items: center;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            margin-right: 20px;
+            font-size: 18px;
+        }
+        .navbar .logo {
+            font-weight: bold;
+            margin-right: 40px; /* Add space between IP and Главная */
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .left-section {
+                padding-left: 20px;
+                padding-right: 20px;
+                text-align: center;
+            }
+            .left-section h1 {
+                font-size: 48px;
+            }
+            .left-section p {
+                font-size: 18px;
+            }
+            .left-section .button a {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+            .navbar {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+            .navbar .logo {
+                margin-right: 20px;
+            }
+            .right-section {
+                height: 300px;
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                flex-direction: column;
+            }
+            .left-section {
+                padding-left: 20px;
+                padding-right: 20px;
+                text-align: center;
+            }
+            .left-section h1 {
+                font-size: 36px;
+            }
+            .left-section p {
+                font-size: 16px;
+            }
+            .left-section .button a {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+            .navbar {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+                flex-wrap: wrap;
+            }
+            .navbar a {
+                margin-bottom: 10px;
+            }
+            .right-section {
+                height: 200px;
+            }
+        }
+  </style>
+ </head>
+ <body>
+  <div class="container">
+   <div class="left-section">
+    <div class="navbar">
+     <a class="logo" href="#">
+      PLAY.FROZYTIME.RU
+     </a>
+     <a href="#">
+      Главная
+     </a>
+     <a href="#">
+      О сервере
+     </a>
+     <a href="#">
+      Новости
+     </a>
+     <a href="#">
+      Магазин
+     </a>
+    </div>
+    <h1>
+     FROZYTIME
+    </h1>
+    <p>
+     СЕРВЕР
+     <span style="font-weight: bold;">
+      BOXPVP
+     </span>
+    </p>
+    <div class="button">
+     <a href="#">
+      Начать игру
+     </a>
+    </div>
+   </div>
+   <div class="right-section">
+    <img alt="Minecraft-like landscape with a sunset, trees, and a house by the water" height="600" src="https://i.imgur.com/S0ytcxJ.jpeg" width="800"/>
+   </div>
+  </div>
+ </body>
+</html>
