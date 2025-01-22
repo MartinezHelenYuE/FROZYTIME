@@ -71,10 +71,57 @@
             color: white;
             margin-right: 20px;
             font-size: 18px;
+            transition: color 0.3s;
+        }
+        .navbar a.active {
+            color: #4b6cb7;
         }
         .navbar .logo {
             font-weight: bold;
             margin-right: 40px; /* Add space between IP and Главная */
+            cursor: pointer;
+        }
+        .tooltip {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .about-section, .news-section, .shop-section {
+            display: none;
+            position: absolute;
+            top: 100px;
+            left: 50px;
+            right: 50px;
+            background-color: #1a1a2e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .about-section h2, .news-section h2, .shop-section h2 {
+            margin-top: 0;
+        }
+        .about-section .social-links, .news-section .social-links, .shop-section .social-links {
+            margin-top: 20px;
+        }
+        .about-section .social-links a, .news-section .social-links a, .shop-section .social-links a {
+            text-decoration: none;
+            color: white;
+            margin-right: 20px;
+            font-size: 24px;
+        }
+        .about-section .button a, .news-section .button a, .shop-section .button a {
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(90deg, #4b6cb7, #182848);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
         }
         @media (max-width: 768px) {
             .container {
@@ -105,6 +152,11 @@
             }
             .right-section {
                 height: 300px;
+            }
+            .about-section, .news-section, .shop-section {
+                top: 150px;
+                left: 20px;
+                right: 20px;
             }
         }
         @media (max-width: 480px) {
@@ -138,26 +190,141 @@
             .right-section {
                 height: 200px;
             }
+            .about-section, .news-section, .shop-section {
+                top: 150px;
+                left: 20px;
+                right: 20px;
+            }
         }
   </style>
+  <script>
+   function copyToClipboard() {
+            const ip = "PLAY.FROZYTIME.RU";
+            navigator.clipboard.writeText(ip).then(() => {
+                const tooltip = document.getElementById("tooltip");
+                tooltip.style.display = "block";
+                setTimeout(() => {
+                    tooltip.style.display = "none";
+                }, 2000);
+            });
+        }
+
+        function showAboutSection() {
+            const container = document.querySelector('.container');
+            container.innerHTML = `
+                <div class="navbar">
+                    <a class="logo" href="#" onclick="showMainSection()">PLAY.FROZYTIME.RU</a>
+                    <a href="#" onclick="showMainSection()">Главная</a>
+                    <a href="#" onclick="showAboutSection()" class="active">О сервере</a>
+                    <a href="#" onclick="showNewsSection()">Новости</a>
+                    <a href="#" onclick="showShopSection()">Магазин</a>
+                </div>
+                <div class="about-section">
+                    <h2>О сервере</h2>
+                    <p>Здесь будет информация о сервере. Вы можете добавить сюда любые данные, которые хотите показать пользователям.</p>
+                    <div class="social-links">
+                        <a href="https://vk.com" target="_blank"><i class="fab fa-vk"></i></a>
+                        <a href="https://t.me" target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="https://discord.com" target="_blank"><i class="fab fa-discord"></i></a>
+                    </div>
+                    <div class="button">
+                        <a href="#" onclick="showMainSection()">Назад</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        function showNewsSection() {
+            const container = document.querySelector('.container');
+            container.innerHTML = `
+                <div class="navbar">
+                    <a class="logo" href="#" onclick="showMainSection()">PLAY.FROZYTIME.RU</a>
+                    <a href="#" onclick="showMainSection()">Главная</a>
+                    <a href="#" onclick="showAboutSection()">О сервере</a>
+                    <a href="#" onclick="showNewsSection()" class="active">Новости</a>
+                    <a href="#" onclick="showShopSection()">Магазин</a>
+                </div>
+                <div class="news-section">
+                    <h2>Новости</h2>
+                    <p>Здесь будут последние новости и обновления сервера.</p>
+                    <div class="button">
+                        <a href="#" onclick="showMainSection()">Назад</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        function showShopSection() {
+            const container = document.querySelector('.container');
+            container.innerHTML = `
+                <div class="navbar">
+                    <a class="logo" href="#" onclick="showMainSection()">PLAY.FROZYTIME.RU</a>
+                    <a href="#" onclick="showMainSection()">Главная</a>
+                    <a href="#" onclick="showAboutSection()">О сервере</a>
+                    <a href="#" onclick="showNewsSection()">Новости</a>
+                    <a href="#" onclick="showShopSection()" class="active">Магазин</a>
+                </div>
+                <div class="shop-section">
+                    <h2>Магазин</h2>
+                    <p>Здесь будет информация о товарах и услугах, доступных в магазине сервера.</p>
+                    <div class="button">
+                        <a href="#" onclick="showMainSection()">Назад</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        function showMainSection() {
+            const container = document.querySelector('.container');
+            container.innerHTML = `
+                <div class="left-section">
+                    <div class="navbar">
+                        <a class="logo" href="#" onclick="copyToClipboard()">PLAY.FROZYTIME.RU</a>
+                        <a href="#" onclick="showMainSection()" class="active">Главная</a>
+                        <a href="#" onclick="showAboutSection()">О сервере</a>
+                        <a href="#" onclick="showNewsSection()">Новости</a>
+                        <a href="#" onclick="showShopSection()">Магазин</a>
+                    </div>
+                    <h1>FROZYTIME</h1>
+                    <p>СЕРВЕР <span style="font-weight: bold;">BOXPVP</span></p>
+                    <div class="button">
+                        <a href="#">Начать игру</a>
+                    </div>
+                </div>
+                <div class="right-section">
+                    <img src="https://i.imgur.com/S0ytcxJ.jpeg" alt="Minecraft-like landscape with a sunset, trees, and a house by the water" width="800" height="600">
+                </div>
+            `;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.navbar a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    link.classList.add('active');
+                });
+            });
+        });
+  </script>
  </head>
  <body>
   <div class="container">
    <div class="left-section">
     <div class="navbar">
-     <a class="logo" href="#">
+     <a class="logo" href="#" onclick="copyToClipboard()">
       PLAY.FROZYTIME.RU
      </a>
-     <a href="#">
+     <a href="#" onclick="showMainSection()" class="active">
       Главная
      </a>
-     <a href="#">
+     <a href="#" onclick="showAboutSection()">
       О сервере
      </a>
-     <a href="#">
+     <a href="#" onclick="showNewsSection()">
       Новости
      </a>
-     <a href="#">
+     <a href="#" onclick="showShopSection()">
       Магазин
      </a>
     </div>
@@ -179,6 +346,9 @@
    <div class="right-section">
     <img alt="Minecraft-like landscape with a sunset, trees, and a house by the water" height="600" src="https://i.imgur.com/S0ytcxJ.jpeg" width="800"/>
    </div>
+  </div>
+  <div class="tooltip" id="tooltip">
+   IP скопирован!
   </div>
  </body>
 </html>
